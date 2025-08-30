@@ -5,8 +5,28 @@ import { useState, useEffect } from "react";
 import React from "react";
 import Link from "next/link";
 
+interface Pool {
+  price: {
+    usd: number;
+  };
+  txns: {
+    volume: number;
+    volume24h: number;
+  };
+}
+
+interface Token {
+  name: string;
+  symbol: string;
+}
+
+interface TrendingItem {
+  token: Token;
+  pools: Pool[];
+}
+
 export default function Page() {
-  const [trending, setTrending] = useState<any[]>([]);
+  const [trending, setTrending] = useState<TrendingItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
